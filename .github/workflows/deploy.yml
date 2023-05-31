@@ -7,8 +7,6 @@ jobs:
     environment: production
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
-
       - name: git-sync
         uses: wei/git-sync@v3
         with:
