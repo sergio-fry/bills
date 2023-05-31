@@ -12,7 +12,7 @@ jobs:
         uses: wei/git-sync@v3
         with:
           source_repo: "https://github.com/sergio-fry/bills.git"
-          source_branch: ${{ GITHUB_SHA }}
+          source_branch: "$GITHUB_SHA"
           destination_repo: {{ secrets.DESTINATION_GIT_URL }}
           destination_branch: "main"
           destination_ssh_private_key: ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
