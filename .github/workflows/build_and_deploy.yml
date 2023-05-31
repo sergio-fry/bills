@@ -34,6 +34,9 @@ jobs:
       - name: Run tests
         run: bin/rake
 
+      - name: Run faetures
+        run: bin/cucumber
+
   lint:
     runs-on: ubuntu-latest
     steps:
