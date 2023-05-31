@@ -11,7 +11,7 @@ jobs:
         with:
           source_repo: "https://github.com/sergio-fry/bills.git"
           source_branch: "main"
-          destination_repo: "destination_org/repository"
+          destination_repo: "user@example.com:repo_name"
           destination_branch: "main"
           source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }}
           destination_ssh_private_key: ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
