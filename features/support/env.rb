@@ -1,4 +1,7 @@
+ENV['RAILS_ENV'] ||= 'test'
+
 require 'cucumber/rails'
+require 'dotenv/load'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -26,6 +29,7 @@ ActionController::Base.allow_rescue = false
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
   DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.allow_remote_database_url = true
 rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
