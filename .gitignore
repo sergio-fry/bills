@@ -31,3 +31,5 @@
 /config/master.key
 
 /.rspec_status
+/.env.local
+/.env.*.local
