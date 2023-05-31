@@ -54,6 +54,7 @@ jobs:
   deploy:
     environment: production
     runs-on: ubuntu-latest
+    if: github.branch == "main"
     needs: ["test", "lint"]
     steps:
       - name: git-sync
