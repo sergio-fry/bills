@@ -34,3 +34,6 @@ en:
   organizations: Organizations
   new_organization: New Organization
   organization_name: Name
+  organiaztion_created: Organization was successfully created
+  organiaztion_updated: Organization was successfully updated
+  organization_destroyed: Organization was successfully destroyed
