@@ -53,6 +53,7 @@ gem 'dotenv-rails'
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+  gem 'cucumber-rails'
 end
 
 group :development do
@@ -62,4 +63,8 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'web-console'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
