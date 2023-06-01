@@ -1,3 +1,4 @@
 Given('Logged in user') do
-  # do nothing
+  @current_user = FactoryBot.create(:user)
+  sign_in @current_user
 end

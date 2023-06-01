@@ -52,10 +52,12 @@ gem 'bootstrap', '~> 5.2.2'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'omniauth'
 
 group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 
