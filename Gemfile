@@ -53,6 +53,8 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-vkontakte'
 
 group :development, :test do
   gem 'cucumber-rails', require: false

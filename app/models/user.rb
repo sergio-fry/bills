@@ -3,5 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # :database_authenticatable, :registerable,
   # :recoverable, :rememberable, :validatable
-  devise :trackable, :omniauthable, :rememberable, omniauth_providers: [:vk]
+  devise(
+    :database_authenticatable,
+    :registerable,
+    :rememberable,
+    :trackable,
+    :validatable
+  )
 end
