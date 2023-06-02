@@ -21,13 +21,18 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
 
+    result = Domain::CreateOrganization.new(
+      creator: current_user,
+      organization: @organization
+    ).()
+
     respond_to do |format|
-      if @organization.save
-        format.html { redirect_to organization_url(@organization), notice: t('organization_created') }
-        format.json { render :show, status: :created, location: @organization }
+      if result.success?
+        format.html { redirect_to organization_url(result.organization), notice: t('organization_created') }
+        format.json { render :show, status: :created, location: result.organization }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+        format.json { render json: result.errors, status: :unprocessable_entity }
       end
     end
   end
