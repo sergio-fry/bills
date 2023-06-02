@@ -8,6 +8,8 @@ module Domain
     Result = Data.define(:success?, :errors, :organization)
 
     def call
+      @organization.memberships.build(user: @creator, role: :owner)
+
       if @organization.save
         Result.new(success?: true, errors: [], organization: @organization)
       else

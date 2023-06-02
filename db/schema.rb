@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_045816) do
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "organization_id", null: false
+    t.string "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "organization_id"], name: "memberships_user_id_organization_id_key", unique: true

@@ -3,6 +3,7 @@ class CreateMemberships < ActiveRecord::Migration[7.0]
     create_table :memberships, id: :uuid do |t|
       t.uuid :user_id, null: false
       t.uuid :organization_id, null: false
+      t.string :role, null: false
 
       t.timestamps
     end
