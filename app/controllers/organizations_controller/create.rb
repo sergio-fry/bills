@@ -6,21 +6,31 @@ class OrganizationsController
     end
 
     def call
-      @organization = Organization.new(@organization_params)
+      init_organization
       authorize
+      create
+      respond
+    end
 
-      result = Domain::CreateOrganization.new(
+    def create
+      @result = Domain::CreateOrganization.new(
         creator: current_user,
         organization: @organization
       ).call
+    end
 
+    def init_organization
+      @organization = Organization.new(@organization_params)
+    end
+
+    def respond
       respond_to do |format|
-        if result.success?
-          format.html { redirect_to organization_url(result.organization), notice: t('organization_created') }
-          format.json { render :show, status: :created, location: result.organization }
+        if @result.success?
+          format.html { redirect_to organization_url(@result.organization), notice: t('organization_created') }
+          format.json { render :show, status: :created, location: @result.organization }
         else
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: result.errors, status: :unprocessable_entity }
+          format.json { render json: @result.errors, status: :unprocessable_entity }
         end
       end
     end
