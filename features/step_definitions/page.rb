@@ -6,7 +6,7 @@ Then('See text {string}') do |text|
   expect(page).to have_content text
 end
 
-Then('Can\'t see text {string}') do |txt|
+Then('Can\'t see text {string}') do |text|
   expect(page).not_to have_content text
 end
 
