@@ -18,10 +18,10 @@ RSpec.describe Organization do
       it { expect(scope).to include organization }
     end
 
-    context 'when user is a member' do
+    context 'when user is a member', pending: 'join is not implemented' do
       before { Domain::JoinOrganization.new(organization:, member: user) }
 
-      xit { expect(scope).to include organization }
+      it { expect(scope).to include organization }
     end
 
     context 'when user is NOT a member' do
