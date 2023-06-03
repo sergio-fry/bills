@@ -411,6 +411,7 @@ DEPENDENCIES
   rails (~> 7.0.5)
   rspec-rails
   rubocop
+  rubocop-factory_bot
   rubocop-rails
   rubocop-rspec
   sprockets-rails

@@ -9,16 +9,18 @@ RSpec.describe Organization do
     let(:organization) { build(:organization) }
 
     before do
-      Domain::CreateOrganization.new(creator: owner, organization:).()
+      Domain::CreateOrganization.new(creator: owner, organization:).call
     end
 
     context 'when user is an owner' do
       let(:user) { owner }
+
       it { expect(scope).to include organization }
     end
 
     context 'when user is a member' do
       before { Domain::JoinOrganization.new(organization:, member: user) }
+
       xit { expect(scope).to include organization }
     end
 
