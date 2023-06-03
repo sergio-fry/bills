@@ -9,7 +9,7 @@ class OrganizationPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.with_member(user)
     end
   end
 end

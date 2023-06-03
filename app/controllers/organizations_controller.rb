@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations or /organizations.json
   def index
     authorize :organization
-    @organizations = Organization.all
+    @organizations = policy_scope(Organization)
   end
 
   # GET /organizations/1 or /organizations/1.json
@@ -75,7 +75,7 @@ class OrganizationsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_organization
-    @organization = Organization.find(params[:id])
+    @organization = policy_scope(Organization).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

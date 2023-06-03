@@ -6,6 +6,10 @@ Then('See text {string}') do |text|
   expect(page).to have_content text
 end
 
+Then('Can\'t see text {string}') do |txt|
+  expect(page).not_to have_content text
+end
+
 When('Click on {string}') do |element|
   click_on element
 end
