@@ -1,3 +1,7 @@
 class HomeController < ApplicationController
-  def show; end
+  skip_before_action :authenticate_user!
+
+  def show
+    authorize :home
+  end
 end
