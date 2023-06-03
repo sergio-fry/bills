@@ -25,23 +25,10 @@ class OrganizationsController < ApplicationController
 
   # POST /organizations or /organizations.json
   def create
-    @organization = Organization.new(organization_params)
-    authorize @organization
-
-    result = Domain::CreateOrganization.new(
-      creator: current_user,
-      organization: @organization
+    Create.new(
+      context: self,
+      organization_params:
     ).call
-
-    respond_to do |format|
-      if result.success?
-        format.html { redirect_to organization_url(result.organization), notice: t('organization_created') }
-        format.json { render :show, status: :created, location: result.organization }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: result.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /organizations/1 or /organizations/1.json
