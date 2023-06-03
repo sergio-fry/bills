@@ -3,28 +3,35 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations or /organizations.json
   def index
+    authorize :organization
     @organizations = Organization.all
   end
 
   # GET /organizations/1 or /organizations/1.json
-  def show; end
+  def show
+    authorize @organization
+  end
 
   # GET /organizations/new
   def new
     @organization = Organization.new
+    authorize @organization
   end
 
   # GET /organizations/1/edit
-  def edit; end
+  def edit
+    authorize @organization
+  end
 
   # POST /organizations or /organizations.json
   def create
     @organization = Organization.new(organization_params)
+    authorize @organization
 
     result = Domain::CreateOrganization.new(
       creator: current_user,
       organization: @organization
-    ).()
+    ).call
 
     respond_to do |format|
       if result.success?
@@ -39,6 +46,8 @@ class OrganizationsController < ApplicationController
 
   # PATCH/PUT /organizations/1 or /organizations/1.json
   def update
+    authorize @organization
+
     respond_to do |format|
       if @organization.update(organization_params)
         format.html { redirect_to organization_url(@organization), notice: t('organization_updated') }
@@ -52,6 +61,8 @@ class OrganizationsController < ApplicationController
 
   # DELETE /organizations/1 or /organizations/1.json
   def destroy
+    authorize @organization
+
     @organization.destroy
 
     respond_to do |format|
