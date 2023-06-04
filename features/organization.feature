@@ -22,7 +22,7 @@ Feature: Organizations
 	Scenario: As registered user I can't see organizations that
 		I don't belong to
 
-		Given Oraganization "Team A"
+		Given Organization "Team A"
 
 		Then Visit "/"
 		And Click on "Organizations"

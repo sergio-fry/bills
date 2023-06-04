@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'home#show'
   get 'healthcheck', to: 'healthcheck#show'
 
-  resources :organizations
+  resources :organizations do
+    resources :incomes
+  end
   devise_for :users
 end
