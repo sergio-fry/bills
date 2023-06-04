@@ -3,7 +3,6 @@ module Domain
     def initialize(creator:, organization:, income_params:)
       @creator = creator
       @organization = organization
-      @income_params
     end
 
     Result = Data.define(:success?, :errors, :organization)
