@@ -1,3 +1,4 @@
 <h1><%= @organization.name %></h1>
 
 <%= link_to t('track_income'), new_organization_income_path(@organization) %>
+<%= link_to t('add_member'), new_organization_member_path(@organization) %>
