@@ -22,7 +22,9 @@ class IncomesController < ApplicationController
 
   # POST /incomes or /incomes.json
   def create
-    result = Domain::CreateIncome.new(
+    result = Domain::TrackIncome.new(
+      creator: current_user,
+      organization: @organization,
       income_params:
     )
 
@@ -73,6 +75,6 @@ class IncomesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def income_params
-    params.require(:income).permit(:member, :amount)
+    params.require(:income).permit(:member_id, :amount)
   end
 end

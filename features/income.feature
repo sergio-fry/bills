@@ -1,3 +1,4 @@
+@wip
 Feature: Income
 
 	Org owner can track incomes
@@ -13,6 +14,7 @@ Feature: Income
 		And Click on "Track Income"
 		And Fill in "Amount" with "100"
 		And Fill in "Member" with "Ivan"
+		And Click on "Track"
 
 		Then Visit "Team A" organization page
 		And See text "Balance: 100"

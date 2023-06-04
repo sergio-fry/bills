@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :member, style: "display: block" %>
-    <%= form.text_field :member %>
+    <%= form.label :member_name, style: "display: block" %>
+    <%= form.text_field :member_id %>
   </div>
 
   <div>
@@ -22,6 +22,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit t('track') %>
   </div>
 <% end %>
