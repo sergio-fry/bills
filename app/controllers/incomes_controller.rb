@@ -22,28 +22,14 @@ class IncomesController < ApplicationController
 
   # POST /incomes or /incomes.json
   def create
-    result = Domain::TrackIncome.new(
-      creator: current_user,
-      organization: @organization,
-      income_params:
-    )
-
-    respond_to do |format|
-      if result.success?
-        format.html { redirect_to income_url(@result.income), notice: 'Income was successfully created.' }
-        format.json { render :show, status: :created, location: @result.income }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @result.errors, status: :unprocessable_entity }
-      end
-    end
+    Create.new.call
   end
 
   # PATCH/PUT /incomes/1 or /incomes/1.json
   def update
     respond_to do |format|
       if @income.update(income_params)
-        format.html { redirect_to income_url(@income), notice: 'Income was successfully updated.' }
+        format.html { redirect_to income_url(@income), notice: t('income_updated') }
         format.json { render :show, status: :ok, location: @income }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,7 +43,7 @@ class IncomesController < ApplicationController
     @income.destroy
 
     respond_to do |format|
-      format.html { redirect_to incomes_url, notice: 'Income was successfully destroyed.' }
+      format.html { redirect_to incomes_url, notice: t('income_destroyed') }
       format.json { head :no_content }
     end
   end
