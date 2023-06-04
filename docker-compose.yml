@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    command: web
+    environment:
+      RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_LOG_TO_STDOUT: "true"
+      SECRET_KEY_BASE: "abc123"
+      HOST: "0.0.0.0"
+      DATABASE_URL: postgres://postgres@postgres/bills
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+
