@@ -1,8 +1,9 @@
 ARG RUBY_VERSION=3.2.2
 
-FROM ruby:$RUBY_VERSION as dev
+FROM ruby:$RUBY_VERSION
 ENV NODE_MAJOR 16
 ENV YARN_VERSION 1.22.17-1
+ENV RUBY_YJIT_ENABLE true
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee /usr/share/keyrings/nodesource.gpg >/dev/null && \
     echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x bullseye main" | tee /etc/apt/sources.list.d/nodesource.list && \
@@ -32,36 +33,9 @@ COPY Gemfile Gemfile.lock /app/
 RUN bundle install -j $(nproc) && \
     bundle config set --local frozen 'true'
 
-
 COPY . /app/
-
 
 RUN RAILS_ENV=development DATABASE_URL=postgres://user@example/db bundle exec rake assets:precompile
-
-
-FROM dev AS runtime-gems
-RUN bundle install --frozen -j $(nproc) --without test development
-RUN bundle clean --force
-
-
-FROM ruby:$RUBY_VERSION-slim
-ENV RUBY_YJIT_ENABLE true
-WORKDIR /app
-
-COPY Aptfile /tmp/Aptfile
-RUN apt-get update -qq && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    $(grep -Ev '^\s*#' /tmp/Aptfile | xargs) && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    truncate -s 0 /var/log/*log
-
-COPY . /app/
-
-COPY --from=runtime-gems /usr/local/bundle /usr/local/bundle
-COPY --from=dev /usr/share/mime/packages/freedesktop.org.xml /usr/share/mime/packages/
-RUN rm -rf /app/public/assets
-COPY --from=dev /app/public/assets /app/public/assets
 
 EXPOSE 3000
 
