@@ -57,7 +57,6 @@ class IncomesController < ApplicationController
 
   def set_organization
     @organization = Organization.find(params[:organization_id])
-    authorize @organization, :show?
   end
 
   # Only allow a list of trusted parameters through.
