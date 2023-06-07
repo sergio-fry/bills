@@ -4,7 +4,7 @@ class MembershipPolicy < ApplicationPolicy
   def new? = create?
   def show? = member?
 
-  def organization = record.organization
+  delegate :organization, to: :record
 
   def member? = organization.member? user
 

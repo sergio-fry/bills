@@ -29,7 +29,9 @@ class MembershipsController
 
       respond_to do |format|
         if @result.success?
-          format.html { redirect_to organization_membership_url(@organization, @membership), notice: t('membership_created') }
+          format.html do
+            redirect_to organization_membership_url(@organization, @membership), notice: t('membership_created')
+          end
           format.json { render :show, status: :created, location: @membership }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +44,12 @@ class MembershipsController
 
     def respond_to(&) = @context.respond_to(&)
     def render(*args) = @context.render(*args)
-    def organization_membership_url(organization, membership) = @context.organization_membership_url organization, membership
+
+    def organization_membership_url(organization,
+                                    membership)
+      @context.organization_membership_url organization, membership
+    end
+
     def t(key) = @context.translate(key)
 
     def redirect_to(loc, notice:) = @context.redirect_to loc, notice:
