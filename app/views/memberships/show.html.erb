@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @membership %>
+<h1><%= @membership.name %></h1>
+
+<%= link_to @membership.phone, "tel:#{@membership.phone}" %>
 
 <div>
   <%= link_to "Edit this membership", edit_membership_path(@membership) %> |
