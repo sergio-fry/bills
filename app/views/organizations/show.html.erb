@@ -4,7 +4,7 @@
 
 
 <h2><%= t('members').capitalize %></h2>
-<% @organization.memberships.each do |membership| %>
+<% @memberships.each do |membership| %>
   <div class="row">
     <h3><%= membership.name %></h3>
     <%= membership.phone %>

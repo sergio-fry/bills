@@ -10,6 +10,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1 or /organizations/1.json
   def show
     authorize @organization
+    @memberships = policy_scope @organization.memberships
   end
 
   # GET /organizations/new

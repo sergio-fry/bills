@@ -20,13 +20,8 @@ module Domain
     end
 
     def email = "#{phone_slug}@example.com}"
-
-    def formatted_phone
-      @phone.remove(/[^0-9+]/)
-    end
-
-    def phone_slug = formatted_phone[1..-1]
-
+    def formatted_phone = "+#{@phone.remove(/[^0-9]/)}"
     def password = @password ||= Password.new.to_s
+    def phone_slug = formatted_phone[1..]
   end
 end

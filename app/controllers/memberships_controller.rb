@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships or /memberships.json
   def index
-    @memberships = Membership.all
+    @memberships = policy_scope @organization.memberships
     authorize :memberships, policy_class: MembershipPolicy
   end
 
