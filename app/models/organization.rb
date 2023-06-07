@@ -7,4 +7,5 @@ class Organization < ApplicationRecord
 
   def member?(user) = memberships.exists?(member: user)
   def owner = members.find_by(memberships: { role: :owner })
+  def owner?(user) = user == owner
 end

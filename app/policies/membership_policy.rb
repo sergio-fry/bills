@@ -1,12 +1,12 @@
 class MembershipPolicy < ApplicationPolicy
-  def initialize(user, record)
-    super(user, record[1])
-    @organization = record[0]
-  end
+  def create? = organization.owner?(user)
 
-  def new?
-    OrganizationPolicy.new(user, @organization).new?
-  end
+  def new? = create?
+  def show? = member?
+
+  def organization = record.organization
+
+  def member? = organization.member? user
 
   class Scope < Scope
     def resolve
