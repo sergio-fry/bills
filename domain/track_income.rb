@@ -1,16 +1,15 @@
 module Domain
-  class CreateOrganization
-    def initialize(creator:, organization:)
+  class TrackIncome
+    def initialize(creator:, organization:, income_params:)
       @creator = creator
       @organization = organization
+      @income_params = income_params
     end
 
     Result = Data.define(:success?, :errors, :organization)
 
     def call
-      @organization.memberships.build(member: @creator, role: :owner)
-
-      if @organization.save
+      if @income.save
         Result.new(success?: true, errors: [], organization: @organization)
       else
         Result.new(success?: false, errors: @organization.errors, organization: @organization)

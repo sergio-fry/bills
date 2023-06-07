@@ -10,4 +10,6 @@ class User < ApplicationRecord
     :trackable,
     :validatable
   )
+
+  has_many :memberships, dependent: :destroy
 end

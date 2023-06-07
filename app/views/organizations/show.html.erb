@@ -1,1 +1,13 @@
 <h1><%= @organization.name %></h1>
+
+<%= link_to t('track_income'), new_organization_income_path(@organization) %>
+
+
+<h2><%= t('members').capitalize %></h2>
+<% @memberships.each do |membership| %>
+  <div class="row">
+    <h3><%= membership.name %></h3>
+    <%= membership.phone %>
+  </div>
+<% end %>
+<%= link_to t('add_member'), new_organization_membership_path(@organization) %>
