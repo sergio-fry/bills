@@ -8,36 +8,57 @@ class MembershipsController
 
     def call
       ApplicationRecord.transaction do
-        user_result = Domain::CreateUserByPhone.new(
-          phone: @membership_params[:phone],
-          name: @membership_params[:name],
-          creator: @context.current_user
-        ).call
-
-        raise user_result.errors.to_json unless user_result.success?
-
-        @result = Domain::AddMember.new(
-          organization: @organization,
-          user: user_result.user,
-          role: :member,
-          creator: @context.current_user
-        ).call
-
-        @membership = @result.membership
+        create_user
+        add_member
         authorize
       end
 
+      respond
+    end
+
+    def add_member
+      @result = Domain::AddMember.new(
+        organization: @organization,
+        user: @user,
+        role: :member,
+        creator: @context.current_user
+      ).call
+
+      @membership = @result.membership
+    end
+
+    def create_user
+      user_result = Domain::CreateUserByPhone.new(
+        phone: @membership_params[:phone],
+        name: @membership_params[:name],
+        creator: @context.current_user
+      ).call
+
+      raise user_result.errors.to_json unless user_result.success?
+
+      @user = user_result.user
+    end
+
+    def respond
       respond_to do |format|
         if @result.success?
-          format.html do
-            redirect_to organization_membership_url(@organization, @membership), notice: t('membership_created')
-          end
-          format.json { render :show, status: :created, location: @membership }
+          respond_success format
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @result.errors, status: :unprocessable_entity }
+          respond_fail format
         end
       end
+    end
+
+    def respond_success(format)
+      format.html do
+        redirect_to organization_membership_url(@organization, @membership), notice: t('membership_created')
+      end
+      format.json { render :show, status: :created, location: @membership }
+    end
+
+    def respond_fail(format)
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @result.errors, status: :unprocessable_entity }
     end
 
     def authorize = @context.send :authorize, @membership, policy_class: MembershipPolicy
