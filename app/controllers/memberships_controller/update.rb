@@ -38,7 +38,9 @@ class MembershipsController
     end
 
     def respond_success(format)
-      format.html { redirect_to organization_membership_url(@organization, @membership), notice: t('membership_updated') }
+      format.html do
+        redirect_to organization_membership_url(@organization, @membership), notice: t('membership_updated')
+      end
       format.json { render :show, status: :ok, location: @membership }
     end
 
