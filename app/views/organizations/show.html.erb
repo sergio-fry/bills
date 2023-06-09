@@ -9,6 +9,8 @@
     <tr>
       <th><%= t('member.name') %></th>
       <th><%= t('phone') %></th>
+      <th><%= t('role') %></th>
+      <th><%= t('registered_at') %></th>
     </tr>
   </thead>
   <tbody  class="">
@@ -16,6 +18,8 @@
       <tr>
         <td><%= link_to membership.name, organization_membership_url(@organization, membership) %></td>
         <td><%= membership.phone %></td>
+        <td><%= t "roles.#{membership.role}" %></td>
+        <td><%= l membership.created_at.to_date, format: :short %></td>
       </tr>
     <% end %>
   </tbody>

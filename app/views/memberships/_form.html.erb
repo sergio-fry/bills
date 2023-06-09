@@ -11,17 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class="mb-3">
+    <%= form.label :phone, class: 'form-label' %>
+    <%= form.text_field :phone, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit t('save') %>
+  <div class="mb-3">
+    <%= form.submit t('save'), class: 'btn btn-primary' %>
+    <% if membership.new_record? %>
+      <%= link_to t('cancel'), organization_path(@organization), class: 'btn btn-secondary' %>
+    <% else %>
+      <%= link_to t('cancel'), organization_membership_path(@organization, membership), class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 <% end %>
