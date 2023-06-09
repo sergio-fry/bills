@@ -1,10 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @membership %>
+<h1><%= @membership.name %></h1>
 
-<div>
-  <%= link_to "Edit this membership", edit_membership_path(@membership) %> |
-  <%= link_to "Back to memberships", memberships_path %>
+<table class="table  table-striped">
+  <tr>
+    <th><%= t('name') %></th>
+    <td><%= @membership.name %></td>
+  </tr>
+  <tr>
+    <th><%= t('phone') %></th>
+    <td><%= @membership.phone %></td>
+  </tr>
+  <tr>
+    <th><%= t('role') %></th>
+    <td><%= t "roles.#{@membership.role}" %></td>
+  </tr>
+</table>
 
-  <%= button_to "Destroy this membership", @membership, method: :delete %>
-</div>
+
+<% if policy(@membership).edit? %>
+  <%= link_to t('edit'), edit_organization_membership_path(@organization, @membership), class: 'btn btn-primary' %>
+<% end %>

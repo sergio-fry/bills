@@ -12,4 +12,6 @@ class User < ApplicationRecord
   )
 
   has_many :memberships, dependent: :destroy
+
+  def name = self[:name] || email
 end
