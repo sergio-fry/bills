@@ -33,16 +33,8 @@ class MembershipsController < ApplicationController
 
   # PATCH/PUT /memberships/1 or /memberships/1.json
   def update
+    Update.new(self, membership_params:, organization: @organization).call
     authorize @membership, policy_class: MembershipPolicy
-    respond_to do |format|
-      if @membership.update(membership_params)
-        format.html { redirect_to membership_url(@membership), notice: t('membership_updated') }
-        format.json { render :show, status: :ok, location: @membership }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /memberships/1 or /memberships/1.json

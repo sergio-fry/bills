@@ -1,6 +1,8 @@
 class MembershipPolicy < ApplicationPolicy
   def create? = owner?
   def new? = create?
+
+  def update? = owner?
   def edit? = create?
 
   def show? = member?
