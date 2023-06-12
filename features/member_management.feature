@@ -4,16 +4,16 @@ Feature: Member Management
 
 
 	Background:
-		Given Organization "Team A"
-		And Logged in as owner of Organization "Team A"
+		Given organization "Team A"
+		And logged in as owner of Organization "Team A"
 
 
 	Scenario: I can add a member
-		When Visit "Team A" organization page
-		And Click on "Add Member"
-		And Fill in "Name" with "Ivan"
-		And Fill in "Phone" with "+123456789"
-		And Click on "Save"
+		When visit "Team A" organization page
+		And click on "Add Member"
+		And fill in "Name" with "Ivan"
+		And fill in "Phone" with "+123456789"
+		And click on "Save"
 
-		Then Visit "Team A" organization page
-		And See text "Ivan"
+		Then visit "Team A" organization page
+		And see text "Ivan"

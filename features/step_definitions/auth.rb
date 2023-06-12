@@ -6,15 +6,15 @@ def loggged_in_user(user = FactoryBot.create(:user))
   click_on 'Log in'
 end
 
-Given('Logged in user') do
+Given('logged in user') do
   loggged_in_user
 end
 
-Given('Logged in as owner of Organization {string}') do |name|
+Given('logged in as owner of Organization {string}') do |name|
   loggged_in_user Organization.find_by!(name:).owner
 end
 
-When('Visit {string} organization page') do |_name|
+When('visit {string} organization page') do |_name|
   visit '/'
   click_on 'Organizations'
   click_on 'Team A'

@@ -4,26 +4,26 @@ Feature: Organizations
 
 
 	Background:
-		Given Logged in user
+		Given logged in user
 
 
 	Scenario: As registered user I can create new organization
-		When Visit "/"
-		And Click on "Organizations"
-		And Click on "New Organization"
-		And Fill in "Name" with "Team A"
-		And Click on "Create"
+		When visit "/"
+		And click on "Organizations"
+		And click on "New Organization"
+		And fill in "Name" with "Team A"
+		And click on "Create"
 
-		Then Visit "/"
-		And Click on "Organizations"
-		Then See text "Team A"
+		Then visit "/"
+		And click on "Organizations"
+		Then see text "Team A"
 
 
 	Scenario: As registered user I can't see organizations that
 		I don't belong to
 
-		Given Organization "Team A"
+		Given organization "Team A"
 
-		Then Visit "/"
-		And Click on "Organizations"
-		Then Can't see text "Team A"
+		Then visit "/"
+		And click on "Organizations"
+		Then can't see text "Team A"

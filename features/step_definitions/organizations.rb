@@ -5,6 +5,6 @@ def create_organization(name, creator: FactoryBot.create(:user))
   ).call
 end
 
-Given('Organization {string}') do |name|
+Given('organization {string}') do |name|
   create_organization name
 end
