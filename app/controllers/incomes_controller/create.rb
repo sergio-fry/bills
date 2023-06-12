@@ -42,7 +42,7 @@ class IncomesController
     def current_user = @context.current_user
 
     def respond_to(&) = @context.respond_to(&)
-    def income_url(income) = @context.organization_income_url income.organization, income
+    def income_url(income) = @context.organization_url income.organization, income
     def t(key) = @context.translate(key)
 
     def redirect_to(loc, notice:) = @context.redirect_to loc, notice:
