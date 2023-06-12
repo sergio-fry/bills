@@ -32,7 +32,9 @@ class IncomesController < ApplicationController
   end
 
   # GET /incomes/1/edit
-  def edit; end
+  def edit
+    authorize @income
+  end
 
   # POST /incomes or /incomes.json
   def create
@@ -44,9 +46,10 @@ class IncomesController < ApplicationController
 
   # PATCH/PUT /incomes/1 or /incomes/1.json
   def update
+    authorize @income
     respond_to do |format|
       if @income.update(income_params)
-        format.html { redirect_to income_url(@income), notice: t('income_updated') }
+        format.html { redirect_to organization_url(@organization), notice: t('income_updated') }
         format.json { render :show, status: :ok, location: @income }
       else
         format.html { render :edit, status: :unprocessable_entity }

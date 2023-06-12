@@ -16,7 +16,10 @@
         <td><%= l income.created_at.to_date %></td>
         <td><%= number_to_currency income.amount %></td>
         <td><%= income.member.name %></td>
-        <td><%= link_to t('edit'), edit_organization_income_url(@organization, income) %></td>
+
+        <% if policy(income).edit? %>
+          <td><%= link_to t('edit'), edit_organization_income_url(@organization, income) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,7 +32,9 @@
   </tbody>
 </table>
 
-<%= link_to t('track_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
+<% if policy(:income).create?(@organization) %>
+  <%= link_to t('track_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
+<% end %>
 
 
 <h2><%= t('members').capitalize %></h2>
@@ -53,4 +58,7 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to t('add_member'), new_organization_membership_path(@organization), class: 'btn btn-primary' %>
+
+<% if policy(@organization).add_member? %>
+  <%= link_to t('add_member'), new_organization_membership_path(@organization), class: 'btn btn-primary' %>
+<% end %>
