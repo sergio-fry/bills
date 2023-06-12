@@ -13,15 +13,15 @@ Feature: Income
 	Scenario: I can track incomes
 		When visit "Team A" organization page
 
-		And click on "Track Income"
+		And click on "track income"
 		And fill in "Amount" with "100"
 		And select "Ivan" from "Member"
-		And click on "Add"
+		And click on "add"
 
-		And click on "Track Income"
+		And click on "track income"
 		And fill in "Amount" with "10"
 		And select "Petr" from "Member"
-		And click on "Add"
+		And click on "add"
 
 		Then visit "Team A" organization page
 		And see text "$110.00"

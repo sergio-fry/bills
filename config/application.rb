@@ -36,6 +36,5 @@ module Bills
     config.generators.system_tests = nil
 
     config.default_locale = ENV.fetch('RAILS_DEFAULT_LOCALE', 'en')
-    config.i18n.fallbacks = false
   end
 end

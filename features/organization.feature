@@ -10,9 +10,9 @@ Feature: Organizations
 	Scenario: As registered user I can create new organization
 		When visit "/"
 		And click on "Organizations"
-		And click on "New Organization"
+		And click on "new organization"
 		And fill in "Name" with "Team A"
-		And click on "Create"
+		And click on "create"
 
 		Then visit "/"
 		And click on "Organizations"

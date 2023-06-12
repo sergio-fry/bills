@@ -1,7 +1,12 @@
 ---
 ru:
+  date:
+    formats:
+      default: '%d.%m.%Y'
+      short: '%d.%m'
+
   add: добавить
-  add_member: добавить участников
+  add_member: добавить участника
   amount: количество
   balance: баланс
   cancel: отмена
@@ -30,9 +35,10 @@ ru:
   organization_updated: организация обновлена
   new_organization: новая организация
   phone: телефон
-  registered_at: зарегистрирован в
+  registered_at: дата регистрации
   role: роль
   save: сохранять
   signout: выход
-  track_income: отслеживать доход
+  track_income: новое поступление
   welcome: добро пожаловать
+

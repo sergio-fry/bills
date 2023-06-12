@@ -10,10 +10,10 @@ Feature: Member Management
 
 	Scenario: I can add a member
 		When visit "Team A" organization page
-		And click on "Add Member"
+		And click on "add member"
 		And fill in "Name" with "Ivan"
 		And fill in "Phone" with "+123456789"
-		And click on "Save"
+		And click on "save"
 
 		Then visit "Team A" organization page
 		And see text "Ivan"
