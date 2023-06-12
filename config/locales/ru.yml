@@ -1,16 +1,15 @@
 ---
 ru:
-  date:
-    formats:
-      default: '%d.%m.%Y'
-      short: '%d.%m'
-
   add: добавить
   add_member: добавить участника
   amount: количество
   balance: баланс
   cancel: отмена
   create: создать
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m"
   edit: редактировать
   enter: войти
   home: главная
@@ -26,14 +25,14 @@ ru:
   membership_deleted: членство удалено
   membership_updated: членство обновлено
   name: название
-  organizations: организации
+  new_organization: новая организация
   organiaztion_created: организация успешно создана
   organiaztion_updated: организация успешно обновлена
   organization_created: организация создана
   organization_destroyed: организация была успешно уничтожена
   organization_name: имя
   organization_updated: организация обновлена
-  new_organization: новая организация
+  organizations: организации
   phone: телефон
   registered_at: дата регистрации
   role: роль
@@ -41,4 +40,3 @@ ru:
   signout: выход
   track_income: новое поступление
   welcome: добро пожаловать
-
