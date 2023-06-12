@@ -1,44 +1,46 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  create: Create
-  home: Home
-  new_organization: New Organization
-  organiaztion_created: Organization was successfully created
-  organiaztion_updated: Organization was successfully updated
-  organization_destroyed: Organization was successfully destroyed
-  organization_name: Name
-  organizations: Organizations
-  welcome: Welcome
-  enter: Enter
-  members: Members
-  save: Save
+  add: add
+  add_member: add member
+  amount: amount
+  balance: balance
+  cancel: cancel
+  create: create
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m"
+  edit: edit
+  enter: enter
+  home: home
+  income_created: income created
+  income_destroyed: income destroyed
+  income_updated: income updated
+  incomes:
+    date: date
+  member: member
+  member_name: name
+  members: members
+  membership_created: membership created
+  membership_deleted: membership deleted
+  membership_updated: membership updated
+  money_amount: amount
+  name: name
+  new_organization: new organization
+  organiaztion_created: organization was successfully created
+  organiaztion_updated: organization was successfully updated
+  organization_created: organization created
+  organization_destroyed: organization was successfully destroyed
+  organization_name: name
+  organization_updated: organization updated
+  organizations: organizations
+  phone: phone
+  registered_at: registered at
+  role: role
+  roles:
+    member: member
+    owner: owner
+  save: save
+  signout: signout
+  track_income: track income
+  welcome: welcome

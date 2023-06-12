@@ -9,27 +9,47 @@ class IncomesController < ApplicationController
   end
 
   # GET /incomes/1 or /incomes/1.json
-  def show; end
+  def show
+    authorize @income
+  end
+
+  class NewIncome < SimpleDelegator
+    attr_reader :organization
+
+    def initialize(income, organization:)
+      super income
+      @organization = organization
+    end
+  end
 
   # GET /incomes/new
   def new
-    @income = Income.new
-    authorize [@organization, @income], policy_class: IncomePolicy
+    @income = NewIncome.new(
+      Income.new,
+      organization: @organization
+    )
+    authorize @income
   end
 
   # GET /incomes/1/edit
-  def edit; end
+  def edit
+    authorize @income
+  end
 
   # POST /incomes or /incomes.json
   def create
-    Create.new.call
+    Create.new(
+      income_params:,
+      context: self
+    ).call
   end
 
   # PATCH/PUT /incomes/1 or /incomes/1.json
   def update
+    authorize @income
     respond_to do |format|
       if @income.update(income_params)
-        format.html { redirect_to income_url(@income), notice: t('income_updated') }
+        format.html { redirect_to organization_url(@organization), notice: t('income_updated') }
         format.json { render :show, status: :ok, location: @income }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,6 +81,6 @@ class IncomesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def income_params
-    params.require(:income).permit(:member_id, :amount)
+    params.require(:income).permit(:membership_id, :amount)
   end
 end

@@ -1,19 +1,26 @@
 module Domain
   class TrackIncome
-    def initialize(creator:, organization:, income_params:)
+    def initialize(creator:, membership:, amount:)
       @creator = creator
-      @organization = organization
-      @income_params = income_params
+      @membership = membership
+      @amount = amount
     end
 
-    Result = Data.define(:success?, :errors, :organization)
+    Result = Data.define(:success?, :errors, :income)
 
     def call
-      if @income.save
-        Result.new(success?: true, errors: [], organization: @organization)
+      if income.save
+        Result.new(success?: true, errors: [], income:)
       else
-        Result.new(success?: false, errors: @organization.errors, organization: @organization)
+        Result.new(success?: false, errors: income.errors, income:)
       end
+    end
+
+    def income
+      @income ||= Income.new(
+        membership: @membership,
+        amount: @amount
+      )
     end
   end
 end

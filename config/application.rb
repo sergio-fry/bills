@@ -34,5 +34,7 @@ module Bills
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.default_locale = ENV.fetch('RAILS_DEFAULT_LOCALE', 'en')
   end
 end

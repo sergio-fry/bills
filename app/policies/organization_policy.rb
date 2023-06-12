@@ -6,6 +6,7 @@ class OrganizationPolicy < ApplicationPolicy
   def edit? = record.owner? user
   def update? = edit?
   def destroy? = record.owner? user
+  def add_member? = record.owner? user
 
   class Scope < Scope
     def resolve

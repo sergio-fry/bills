@@ -24,12 +24,14 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'i18n-tasks', '~> 1.0.12'
   gem 'rspec-rails'
 end
 
 group :development do
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
+  gem 'easy_translate'
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-rails', require: false

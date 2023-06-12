@@ -1,32 +1,34 @@
 class IncomesController
   class Create
-    def initialize(organization_params:, context:)
+    def initialize(income_params:, context:)
       @context = context
-      @organization_params = organization_params
+      @income_params = income_params
     end
 
     def call
-      init_organization
+      init_income
       authorize
       create
       respond
     end
 
-    def create
-      @result = Domain::TrackIncome.new(
+    def track_income
+      @track_income ||= Domain::TrackIncome.new(
         creator: current_user,
-        organization: @organization,
-        income_params:
+        membership:,
+        amount:
       )
     end
 
-    def init_organization
-      @organization = Organization.new(@organization_params)
-    end
+    def create = @result = track_income.call
+    def init_income = @income = track_income.income
+
+    def membership = Membership.find @income_params[:membership_id]
+    def amount = @income_params[:amount]
 
     def respond
       respond_to do |format|
-        if result.success?
+        if @result.success?
           format.html { redirect_to income_url(@result.income), notice: t('income_created') }
           format.json { render :show, status: :created, location: @result.income }
         else
@@ -36,11 +38,11 @@ class IncomesController
       end
     end
 
-    def authorize = @context.send :authorize, @organization
+    def authorize = @context.send :authorize, @income
     def current_user = @context.current_user
 
     def respond_to(&) = @context.respond_to(&)
-    def organization_url(organization) = @context.organization_url organization
+    def income_url(income) = @context.organization_url income.organization, income
     def t(key) = @context.translate(key)
 
     def redirect_to(loc, notice:) = @context.redirect_to loc, notice:

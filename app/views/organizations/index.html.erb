@@ -1,17 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Organizations</h1>
+<h1><%= t('organizations').capitalize %></h1>
 
 <div id="organizations">
   <% @organizations.each do |organization| %>
     <div class="card mb-3" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= link_to organization.name, organization_path(organization) %></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text"></p>
         <%= link_to t('enter'), organization_path(organization), class: 'card-link' %>
       </div>
     </div>
   <% end %>
 </div>
 
-<%= link_to t('.new_organization'), new_organization_path, class: 'btn btn-primary' %>
+<%= link_to t('new_organization'), new_organization_path, class: 'btn btn-primary' %>

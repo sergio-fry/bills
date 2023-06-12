@@ -1,12 +1,11 @@
 class IncomePolicy < ApplicationPolicy
-  def initialize(user, record)
-    super(user, record[1])
-    @organization = record[0]
-  end
+  def create?(organization = record.organization) = organization.owner? user
+  alias new? create?
 
-  def new?
-    OrganizationPolicy.new(user, @organization).new?
-  end
+  def update?(organization = record.organization) = organization.owner? user
+  alias edit? update?
+
+  def show?(organization = record.organization) = organization.member? user
 
   class Scope < Scope
     def resolve

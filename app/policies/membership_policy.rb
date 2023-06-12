@@ -1,9 +1,8 @@
 class MembershipPolicy < ApplicationPolicy
-  def create? = owner?
-  def new? = create?
-
-  def update? = owner?
-  def edit? = create?
+  def create? = OrganizationPolicy.new(user, organization).add_member?
+  alias new? create?
+  alias update? create?
+  alias edit? create?
 
   def show? = member?
 
