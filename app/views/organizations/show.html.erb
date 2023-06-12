@@ -1,5 +1,10 @@
 <h1><%= @organization.name %></h1>
 
+<h2><%= t('balance') %></h2>
+
+<div class="row">
+  <%= t('balance') %>: <%= number_to_currency @organization.balance %>
+</div>
 <%= link_to t('track_income'), new_organization_income_path(@organization) %>
 
 

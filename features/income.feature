@@ -14,7 +14,7 @@ Feature: Income
 		And click on "Track Income"
 		And fill in "Amount" with "100"
 		And select "Ivan" from "Member"
-		And click on "Track"
+		And click on "Add"
 
 		Then visit "Team A" organization page
-		And see text "Balance: 100"
+		And see text "Balance: $100.00"

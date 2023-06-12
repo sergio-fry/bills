@@ -3,8 +3,8 @@
 <%= render @income %>
 
 <div>
-  <%= link_to "Edit this income", edit_income_path(@income) %> |
-  <%= link_to "Back to incomes", incomes_path %>
+  <%= link_to "Edit this income", edit_organization_income_path(@organization, @income) %> |
+  <%= link_to "Back to incomes", organization_incomes_path(@organization) %>
 
-  <%= button_to "Destroy this income", @income, method: :delete %>
+  <%= button_to "Destroy this income", organization_income_url(@organization, @income), method: :delete %>
 </div>
