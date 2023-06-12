@@ -1,5 +1,10 @@
 ---
 en:
+  date:
+    formats:
+      default: '%d.%m.%Y'
+      short: '%d.%m'
+
   add: add
   add_member: add member
   amount: amount
