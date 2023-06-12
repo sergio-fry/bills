@@ -16,6 +16,7 @@
         <td><%= l income.created_at.to_date %></td>
         <td><%= number_to_currency income.amount %></td>
         <td><%= income.member.name %></td>
+        <td><%= link_to t('edit'), edit_organization_income_url(@organization, income) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,8 +27,8 @@
       <th><%= number_to_currency @organization.balance %></th>
     </tr>
   </tbody>
-  
 </table>
+
 <%= link_to t('track_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
 
 

@@ -7,6 +7,7 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.2.2'
 gem 'devise'
 gem 'dotenv-rails'
+gem 'i18n-tasks', '~> 1.0.12'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'omniauth'
