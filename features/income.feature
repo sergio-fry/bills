@@ -6,15 +6,22 @@ Feature: Income
 	Background:
 		Given organization "Team A"
 		And member "Ivan" of Organization "Team A"
+		And member "Petr" of Organization "Team A"
 		And logged in as owner of Organization "Team A"
 
 
 	Scenario: I can track incomes
 		When visit "Team A" organization page
+
 		And click on "Track Income"
 		And fill in "Amount" with "100"
 		And select "Ivan" from "Member"
 		And click on "Add"
 
+		And click on "Track Income"
+		And fill in "Amount" with "10"
+		And select "Petr" from "Member"
+		And click on "Add"
+
 		Then visit "Team A" organization page
-		And see text "Balance: $100.00"
+		And see text "$110.00"
