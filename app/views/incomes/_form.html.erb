@@ -22,6 +22,11 @@
   </div>
 
   <div class="mb-3">
-    <%= form.submit t('add'), class: 'btn btn-primary' %>
+    <% if income.new_record? %>
+      <%= form.submit t('add'), class: 'btn btn-primary' %>
+    <% else %>
+      <%= form.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), organization_path(@organization), class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 <% end %>
