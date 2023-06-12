@@ -17,3 +17,7 @@ end
 When('fill in {string} with {string}') do |element, value|
   fill_in element, with: value
 end
+
+When('select {string} from {string}') do |value, field|
+  select value, from: field
+end
