@@ -21,15 +21,14 @@ en:
   membership_deleted: membership deleted
   membership_updated: membership updated
   name: name
+  organizations: organizations
   organiaztion_created: organization was successfully created
   organiaztion_updated: organization was successfully updated
   organization_created: organization created
   organization_destroyed: organization was successfully destroyed
   organization_name: name
   organization_updated: organization updated
-  organizations:
-    index:
-      new_organization: new organization
+  new_organization: new organization
   phone: phone
   registered_at: registered at
   role: role

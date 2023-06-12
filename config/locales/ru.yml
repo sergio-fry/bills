@@ -1,1 +1,38 @@
---- {}
+---
+ru:
+  add: добавить
+  add_member: добавить участников
+  amount: количество
+  balance: баланс
+  cancel: отмена
+  create: создать
+  edit: редактировать
+  enter: войти
+  home: главная
+  income_created: поступлние добавлено
+  income_destroyed: поступлние удалено
+  income_updated: поступление сохранено
+  incomes:
+    date: число
+  member:
+    name: ФИО
+  members: участники
+  membership_created: членство создано
+  membership_deleted: членство удалено
+  membership_updated: членство обновлено
+  name: название
+  organizations: организации
+  organiaztion_created: организация успешно создана
+  organiaztion_updated: организация успешно обновлена
+  organization_created: организация создана
+  organization_destroyed: организация была успешно уничтожена
+  organization_name: имя
+  organization_updated: организация обновлена
+  new_organization: новая организация
+  phone: телефон
+  registered_at: зарегистрирован в
+  role: роль
+  save: сохранять
+  signout: выход
+  track_income: отслеживать доход
+  welcome: добро пожаловать
