@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :membership_id, t('member'), class: 'form-label' %>
+    <%= form.label :membership_id, t('member').capitalize, class: 'form-label' %>
     <%= form.select :membership_id, @organization.memberships.map { |m| [m.name, m.id] }, { include_blank: true }, class: 'form-select' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :amount, class: 'form-label' %>
+    <%= form.label :amount, t('money_amount').capitalize, class: 'form-label' %>
     <%= form.number_field :amount, class: 'form-control' %>
   </div>
 

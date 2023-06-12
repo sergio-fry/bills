@@ -18,12 +18,13 @@ ru:
   income_updated: поступление сохранено
   incomes:
     date: число
-  member:
-    name: ФИО
+  member: участник
+  member_name: ФИО
   members: участники
   membership_created: членство создано
   membership_deleted: членство удалено
   membership_updated: членство обновлено
+  money_amount: сумма
   name: название
   new_organization: новая организация
   organiaztion_created: организация успешно создана
@@ -36,6 +37,9 @@ ru:
   phone: телефон
   registered_at: дата регистрации
   role: роль
+  roles:
+    member: участник
+    owner: владелец
   save: сохранять
   signout: выход
   track_income: новое поступление

@@ -18,12 +18,13 @@ en:
   income_updated: income updated
   incomes:
     date: date
-  member:
-    name: name
+  member: member
+  member_name: name
   members: members
   membership_created: membership created
   membership_deleted: membership deleted
   membership_updated: membership updated
+  money_amount: amount
   name: name
   new_organization: new organization
   organiaztion_created: organization was successfully created
@@ -36,6 +37,9 @@ en:
   phone: phone
   registered_at: registered at
   role: role
+  roles:
+    member: member
+    owner: owner
   save: save
   signout: signout
   track_income: track income
