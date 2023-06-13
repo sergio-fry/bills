@@ -5,14 +5,13 @@ Feature: Expencies
 
 
 	Background:
-		Given organization "Team A"
-		And organization got income with amount "100"
-		And logged in as owner of organization
-
+		Given logged in user
+		And create organization "Team A"
+		And track income "100"
 
 	Scenario: I can track incomes
-		When expense "ball" with amount "50" is tracked
+		When track expense "50" with comment "ball"
 		Then organization balance is "50"
 
-		When expense "water" with amount "60" is tracked
+		When tack expense "60" with comment "60"
 		Then organization balance is "-10"

@@ -5,15 +5,15 @@ Feature: Member Management
 
 	Background:
 		Given logged in user
-		And organization "Team A" added
+		And create organization "Team A"
 
 
 	Scenario: I can add a member
-		When visit "Team A" organization page
+		When visit organization page
 		And click on "add member"
 		And fill in "Name" with "Ivan"
 		And fill in "Phone" with "+123456789"
 		And click on "save"
 
-		Then visit "Team A" organization page
+		Then visit organization page
 		And see text "Ivan"

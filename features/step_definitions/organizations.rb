@@ -14,11 +14,11 @@ def visit_organization_page(name = @organization.name)
   click_on name
 end
 
-Given('organization {string} added') do |name|
+Given('create organization {string}') do |name|
   @organization = create_organization name
 end
 
-Given('member {string} added') do |name|
+Given('add member {string} to organization') do |name|
   @next_member_phone ||= 1_000_000
 
   visit_organization_page
@@ -30,12 +30,20 @@ Given('member {string} added') do |name|
   click_on 'save'
 end
 
-Given('organization got income with amount {string}') do |amount|
+def track_income(amount, member_name = @organization.memberships.first.name)
   visit_organization_page
-  click_on 'track incomes'
+  click_on 'add income'
   fill_in 'Amount', with: amount
-  select @organization.memberships.first.name, from: 'Member'
+  select member_name, from: 'Member'
   click_on 'add'
+end
+
+Given('track income {string}') do |amount|
+  track_income amount
+end
+
+When('track income {string} by {string}') do |amount, member_name|
+  track_income amount, member_name
 end
 
 Given('organization {string} owned by another user') do |name|
@@ -50,14 +58,19 @@ Given('organization {string} owned by another user') do |name|
   @organization = organization_was
 end
 
-When('expense {string} with amount {string} is tracked') do |_string, _string2|
-  pending # Write code here that turns the phrase above into concrete actions
+When('track expense {string} with comment {string}') do |amount, comment|
+  visit_organization_page
+  click_on 'add expense'
+  fill_in 'Amount', with: amount
+  fill_in 'Comment', with: comment
+  click_on 'add'
 end
 
 Given('organization balance is {string}') do |amount|
-  expect(@organization.reload.amount).to eq amount
+  visit_organization_page
+  expect(page).to have_css('.organization__balance', text: amount)
 end
 
-When('visit {string} organization page') do |name|
-  visit_organization_page name
+When('visit organization page') do
+  visit_organization_page
 end

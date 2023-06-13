@@ -5,23 +5,16 @@ Feature: Income
 
 	Background:
 		Given logged in user
-		And organization "Team A" added
-		And member "Ivan" added
-		And member "Petr" added
+		And create organization "Team A"
+		And add member "Ivan" to organization
+		And add member "Petr" to organization
 
 
 	Scenario: I can track incomes
-		When visit "Team A" organization page
+		When visit organization page
 
-		And click on "track income"
-		And fill in "Amount" with "100"
-		And select "Ivan" from "Member"
-		And click on "add"
+		And track income "100" by "Ivan"
+		Then organization balance is "100"
 
-		And click on "track income"
-		And fill in "Amount" with "10"
-		And select "Petr" from "Member"
-		And click on "add"
-
-		Then visit "Team A" organization page
-		And see text "$110.00"
+		And track income "10" by "Petr"
+		Then organization balance is "110"

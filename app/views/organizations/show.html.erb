@@ -27,13 +27,13 @@
   <tbody>
     <tr>
       <th><%= t('balance') %></th>
-      <th><%= number_to_currency @organization.balance %></th>
+      <th class="organization__balance"><%= number_to_currency @organization.balance %></th>
     </tr>
   </tbody>
 </table>
 
 <% if policy(:income).create?(@organization) %>
-  <%= link_to t('track_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
+  <%= link_to t('add_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
 <% end %>
 
 
