@@ -17,9 +17,3 @@ end
 Given('logged in as owner of organization') do
   loggged_in_user @organization.owner
 end
-
-When('visit {string} organization page') do |_name|
-  visit '/'
-  click_on 'Organizations'
-  click_on 'Team A'
-end

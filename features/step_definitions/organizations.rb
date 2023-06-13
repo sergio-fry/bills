@@ -1,36 +1,33 @@
-def create_organization(name, creator: FactoryBot.create(:user))
-  result = Domain::CreateOrganization.new(
-    organization: FactoryBot.build(:organization, name:),
-    creator:
-  ).call
+def create_organization(name)
+  visit '/'
+  click_on 'Organizations'
+  click_on 'new organization'
+  fill_in 'Name', with: name
+  click_on 'create'
 
-  expect(result).to be_success
-
-  result.organization
+  Organization.find_by! name:
 end
 
-Given('organization {string}') do |name|
+def visit_organization_page(name = @organization.name)
+  visit '/'
+  click_on 'Organizations'
+  click_on name
+end
+
+Given('organization {string} added') do |name|
   @organization = create_organization name
 end
 
-def create_user_by_name(name)
-  User.create!(
-    name:,
-    email: "#{name}@example.com",
-    password: 'secret123',
-    password_confirmation: 'secret123'
-  )
-end
+Given('member {string} added') do |name|
+  @next_member_phone ||= 1000_000
 
-Given('member {string} added to organization') do |member_name|
-  user = create_user_by_name member_name
+  visit_organization_page
+  click_on 'add member'
+  fill_in 'Name', with: name
+  fill_in 'Phone', with: @next_member_phone
+  @next_member_phone += 1
 
-  Domain::AddMember.new(
-    creator: @current_user,
-    user:,
-    organization: @organization,
-    role: :member
-  ).call
+  click_on 'save'
 end
 
 Given('organization got income with amount {string}') do |amount|
@@ -43,10 +40,15 @@ Given('organization got income with amount {string}') do |amount|
   expect(result).to be_succes
 end
 
-When('expense {string} with amount {string} is tracked') do |string, string2|
+When('expense {string} with amount {string} is tracked') do |_string, _string2|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given('organization balance is {string}') do |amount|
   expect(@organization.reload.amount).to eq amount
+end
+
+
+When('visit {string} organization page') do |name|
+  visit_organization_page name
 end
