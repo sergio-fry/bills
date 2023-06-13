@@ -5,9 +5,9 @@ Feature: Income
 
 	Background:
 		Given organization "Team A"
-		And member "Ivan" of Organization "Team A"
-		And member "Petr" of Organization "Team A"
-		And logged in as owner of Organization "Team A"
+		And logged in as owner of organization
+		And member "Ivan" added to organization
+		And member "Petr" added to organization
 
 
 	Scenario: I can track incomes

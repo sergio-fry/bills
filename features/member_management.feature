@@ -5,7 +5,7 @@ Feature: Member Management
 
 	Background:
 		Given organization "Team A"
-		And logged in as owner of Organization "Team A"
+		And logged in as owner of organization
 
 
 	Scenario: I can add a member
