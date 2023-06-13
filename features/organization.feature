@@ -22,8 +22,8 @@ Feature: Organizations
 	Scenario: As registered user I can't see organizations that
 		I don't belong to
 
-		Given organization "Team A"
+		Given organization "Team B" owned by another user 
 
 		Then visit "/"
 		And click on "Organizations"
-		Then can't see text "Team A"
+		Then can't see text "Team B"

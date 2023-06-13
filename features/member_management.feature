@@ -4,8 +4,8 @@ Feature: Member Management
 
 
 	Background:
-		Given organization "Team A"
-		And logged in as owner of organization
+		Given logged in user
+		And organization "Team A" added
 
 
 	Scenario: I can add a member

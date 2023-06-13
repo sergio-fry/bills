@@ -19,7 +19,7 @@ Given('organization {string} added') do |name|
 end
 
 Given('member {string} added') do |name|
-  @next_member_phone ||= 1000_000
+  @next_member_phone ||= 1_000_000
 
   visit_organization_page
   click_on 'add member'
@@ -31,13 +31,23 @@ Given('member {string} added') do |name|
 end
 
 Given('organization got income with amount {string}') do |amount|
-  result = Domain::TrackIncome.new(
-    creator: @current_user,
-    membership: @organization.memberships.first,
-    amount:
-  ).call
+  visit_organization_page
+  click_on 'track incomes'
+  fill_in 'Amount', with: amount
+  select @organization.memberships.first.name, from: 'Member'
+  click_on 'add'
+end
 
-  expect(result).to be_succes
+Given('organization {string} owned by another user') do |name|
+  current_user_was = @current_user
+  organization_was = @organization
+
+  loggged_in_user
+  create_organization name
+
+  loggged_in_user current_user_was
+  @current_user = current_user_was
+  @organization = organization_was
 end
 
 When('expense {string} with amount {string} is tracked') do |_string, _string2|
@@ -47,7 +57,6 @@ end
 Given('organization balance is {string}') do |amount|
   expect(@organization.reload.amount).to eq amount
 end
-
 
 When('visit {string} organization page') do |name|
   visit_organization_page name
