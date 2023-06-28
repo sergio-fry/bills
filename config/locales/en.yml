@@ -1,6 +1,7 @@
 ---
 en:
   add: add
+  add_expense: add expense
   add_income: add income
   add_member: add member
   amount: amount

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :organizations do
     resources :incomes
+    resources :expenses
     resources :memberships
   end
 

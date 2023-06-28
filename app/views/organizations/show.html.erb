@@ -36,6 +36,10 @@
   <%= link_to t('add_income'), new_organization_income_path(@organization), class: 'btn btn-primary' %>
 <% end %>
 
+<% if policy(:expense).create?(@organization) %>
+  <%= link_to t('add_expense'), new_organization_expense_path(@organization), class: 'btn btn-primary' %>
+<% end %>
+
 
 <h2><%= t('members').capitalize %></h2>
 <table class="table table-striped table-hover">

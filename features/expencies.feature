@@ -1,4 +1,3 @@
-@wip
 Feature: Expencies
 
 	Org owner can track expencies
@@ -13,5 +12,5 @@ Feature: Expencies
 		When track expense "50" with comment "ball"
 		Then organization balance is "50"
 
-		When tack expense "60" with comment "60"
-		Then organization balance is "-10"
+		When tack expense "40" with comment "pens"
+		Then organization balance is "10"
