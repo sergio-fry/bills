@@ -12,5 +12,5 @@ Feature: Expencies
 		When track expense "50" with comment "ball"
 		Then organization balance is "50"
 
-		When tack expense "40" with comment "pens"
+		When track expense "40" with comment "pens"
 		Then organization balance is "10"

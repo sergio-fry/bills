@@ -8,12 +8,14 @@ en:
   balance: balance
   cancel: cancel
   create: create
+  comment: comment
   date:
     formats:
       default: "%d.%m.%Y"
       short: "%d.%m"
   edit: edit
   enter: enter
+  expense_created: expense created
   home: home
   income_created: income created
   income_destroyed: income destroyed
