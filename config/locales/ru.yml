@@ -1,6 +1,7 @@
 ---
 ru:
   add: добавить
+  add_income: новое поступление
   add_member: добавить участника
   amount: количество
   balance: баланс
@@ -42,5 +43,4 @@ ru:
     owner: владелец
   save: сохранить
   signout: выход
-  add_income: новое поступление
   welcome: добро пожаловать

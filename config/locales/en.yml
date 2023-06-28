@@ -1,6 +1,7 @@
 ---
 en:
   add: add
+  add_income: add income
   add_member: add member
   amount: amount
   balance: balance
@@ -42,5 +43,4 @@ en:
     owner: owner
   save: save
   signout: signout
-  add_income: add income
   welcome: welcome
