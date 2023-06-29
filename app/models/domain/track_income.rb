@@ -19,7 +19,8 @@ module Domain
     def income
       @income ||= Income.new(
         membership: @membership,
-        amount: @amount
+        amount: @amount.abs,
+        organization: @membership.organization
       )
     end
   end

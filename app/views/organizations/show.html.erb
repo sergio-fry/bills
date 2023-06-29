@@ -7,18 +7,18 @@
     <tr>
       <th><%= t('incomes.date') %></th>
       <th><%= t('amount') %></th>
-      <th><%= t('member_name') %></th>
+      <th><%= t('comment') %></th>
     </tr>
   </thead>
   <tbody>
-    <% @organization.incomes.order('created_at DESC').each do |income| %>
+    <% @organization.transactions.sort_by(&:created_at).each do |transaction| %>
       <tr>
-        <td><%= l income.created_at.to_date %></td>
-        <td><%= number_to_currency income.amount %></td>
-        <td><%= income.member.name %></td>
+        <td><%= l transaction.created_at.to_date %></td>
+        <td><%= number_to_currency transaction.amount %></td>
+        <td><%= transaction.description %></td>
 
-        <% if policy(income).edit? %>
-          <td><%= link_to t('edit'), edit_organization_income_url(@organization, income) %></td>
+        <% if policy(transaction).edit? %>
+          <td><%= link_to t('edit'), edit_organization_transaction_url(@organization, transaction) %></td>
         <% end %>
       </tr>
     <% end %>

@@ -79,7 +79,7 @@ class ExpensesController < ApplicationController
     @organization = Organization.find(params[:organization_id])
   end
 
-  def organization = @organization
+  attr_reader :organization
 
   # Only allow a list of trusted parameters through.
   def expense_params

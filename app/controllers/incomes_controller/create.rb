@@ -24,7 +24,7 @@ class IncomesController
     def init_income = @income = track_income.income
 
     def membership = Membership.find @income_params[:membership_id]
-    def amount = @income_params[:amount]
+    def amount = @income_params[:amount].to_f
 
     def respond
       respond_to do |format|

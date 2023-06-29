@@ -19,7 +19,7 @@ module Domain
 
     def expense
       @expense ||= Expense.new(
-        amount: @amount,
+        amount: -@amount.abs,
         comment: @comment,
         organization: @organization
       )

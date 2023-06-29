@@ -21,7 +21,7 @@ class ExpensesController
       )
     end
 
-    def amount = @expense_params[:amount]
+    def amount = @expense_params[:amount].to_f
     def comment = @expense_params[:comment]
     def create = @result = track_expense.call
     def init_expense = @expense = track_expense.expense
