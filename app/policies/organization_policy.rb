@@ -2,15 +2,21 @@ class OrganizationPolicy < ApplicationPolicy
   def index? = true
   def create? = true
   def new? = create?
-  def show? = record.member? user
-  def edit? = record.owner? user
+  def show? = member?
+  def edit? = owner?
   def update? = edit?
-  def destroy? = record.owner? user
-  def add_member? = record.owner? user
+  def destroy? = owner?
+  def add_member? = owner?
+  def transactions? = member?
 
   class Scope < Scope
     def resolve
       scope.with_member(user)
     end
   end
+
+  private
+
+  def member? = record.member? user
+  def owner? = record.owner? user
 end

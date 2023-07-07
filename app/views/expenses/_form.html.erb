@@ -1,0 +1,32 @@
+<%= form_with(model: [@organization, expense]) do |form| %>
+  <% if expense.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+        <% expense.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :comment, t('comment').capitalize, class: 'form-label' %>
+    <%= form.text_field :comment, class: 'form-select' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :amount, t('money_amount').capitalize, class: 'form-label' %>
+    <%= form.number_field :amount, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <% if expense.new_record? %>
+      <%= form.submit t('add'), class: 'btn btn-primary' %>
+    <% else %>
+      <%= form.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), organization_path(@organization), class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+<% end %>

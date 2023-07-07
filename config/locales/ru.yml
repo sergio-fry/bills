@@ -1,10 +1,13 @@
 ---
 ru:
   add: добавить
+  add_expense: добавить расход
+  add_income: новое поступление
   add_member: добавить участника
   amount: количество
   balance: баланс
   cancel: отмена
+  comment: комментарий
   create: создать
   date:
     formats:
@@ -12,6 +15,9 @@ ru:
       short: "%d.%m"
   edit: редактировать
   enter: войти
+  expense_created: расход добавлен
+  expense_destroyed: расход удален
+  expense_updated: расход обновлен
   home: главная
   income_created: поступлние добавлено
   income_destroyed: поступлние удалено
@@ -42,5 +48,5 @@ ru:
     owner: владелец
   save: сохранить
   signout: выход
-  track_income: новое поступление
+  transactions: операции
   welcome: добро пожаловать

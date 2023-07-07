@@ -1,10 +1,13 @@
 ---
 en:
   add: add
+  add_expense: add expense
+  add_income: add income
   add_member: add member
   amount: amount
   balance: balance
   cancel: cancel
+  comment: comment
   create: create
   date:
     formats:
@@ -12,6 +15,9 @@ en:
       short: "%d.%m"
   edit: edit
   enter: enter
+  expense_created: expense created
+  expense_destroyed: expense deleted
+  expense_updated: expense updated
   home: home
   income_created: income created
   income_destroyed: income destroyed
@@ -42,5 +48,5 @@ en:
     owner: owner
   save: save
   signout: signout
-  track_income: track income
+  transactions: transactions
   welcome: welcome
