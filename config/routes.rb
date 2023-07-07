@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'healthcheck', to: 'healthcheck#show'
 
   resources :organizations do
-    resources :transactions, only: :edit
+    resources :transactions
     resources :incomes
     resources :expenses
     resources :memberships
