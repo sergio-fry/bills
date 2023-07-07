@@ -5,4 +5,4 @@ Feature: Home page
 
 	Scenario: Guest visits root page and can see some welcome text
 		When visit "/"
-		Then see text "welcome"
+		Then see text "You need to sign in"

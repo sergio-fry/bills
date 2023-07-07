@@ -12,6 +12,9 @@ class User < ApplicationRecord
   )
 
   has_many :memberships, dependent: :destroy
+  has_many :organizations, through: :memberships
 
   def name = self[:name] || email
+
+  def primary_organization = organizations.first
 end

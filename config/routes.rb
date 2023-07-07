@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :memberships
-  resources :members
   root 'home#show'
   get 'healthcheck', to: 'healthcheck#show'
 
