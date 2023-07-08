@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   # GET /expenses or /expenses.json
   def index
     @transactions = policy_scope @organization.transactions
-    authorize @organization, :transactions?, policy_class: OrganizationPolicy
+    authorize @organization, :transactions?
   end
 
   private

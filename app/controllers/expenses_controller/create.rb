@@ -43,7 +43,7 @@ class ExpensesController
     def current_user = @context.current_user
 
     def respond_to(&) = @context.respond_to(&)
-    def expense_url(expense) = @context.organization_url expense.organization, expense
+    def expense_url(expense) = @context.organization_transactions_url expense.organization
     def t(key) = @context.translate(key)
 
     def redirect_to(loc, notice:) = @context.redirect_to loc, notice:

@@ -16,4 +16,5 @@ Feature: Member Management
 		And click on "save"
 
 		Then visit organization page
+		And click on "Members"
 		And see text "Ivan"

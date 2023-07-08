@@ -8,6 +8,7 @@ class OrganizationPolicy < ApplicationPolicy
   def destroy? = owner?
   def add_member? = owner?
   def transactions? = member?
+  def memberships? = member?
 
   class Scope < Scope
     def resolve

@@ -51,7 +51,7 @@ class MembershipsController
 
     def respond_success(format)
       format.html do
-        redirect_to organization_url(@organization), notice: t('membership_created')
+        redirect_to organization_memberships_url(@organization), notice: t('membership_created')
       end
       format.json { render :show, status: :created, location: @membership }
     end
@@ -66,8 +66,8 @@ class MembershipsController
     def respond_to(&) = @context.respond_to(&)
     def render(*args) = @context.render(*args)
 
-    def organization_url(organization)
-      @context.organization_url organization
+    def organization_memberships_url(organization)
+      @context.organization_memberships_url organization
     end
 
     def t(key) = @context.translate(key)

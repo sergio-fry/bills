@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= t('members').capitalize %></h1>
 
-<h1>Memberships</h1>
+<table class="table table-striped table-hover">
+  <thead class="">
+    <tr>
+      <th><%= t('member_name') %></th>
+      <th><%= t('phone') %></th>
+      <th><%= t('role') %></th>
+      <th><%= t('registered_at') %></th>
+    </tr>
+  </thead>
+  <tbody  class="">
+    <% @memberships.sort_by(&:name).each do |membership| %>
+      <tr>
+        <td><%= link_to membership.name, organization_membership_url(@organization, membership) %></td>
+        <td><%= membership.phone %></td>
+        <td><%= t "roles.#{membership.role}" %></td>
+        <td><%= l membership.created_at.to_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<div id="memberships">
-  <% @memberships.each do |membership| %>
-    <%= render membership %>
-    <p>
-      <%= link_to "Show this membership", membership %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New membership", new_membership_path %>
+<% if policy(@organization).add_member? %>
+  <%= link_to t('add_member'), new_organization_membership_path(@organization), class: 'btn btn-primary' %>
+<% end %>
