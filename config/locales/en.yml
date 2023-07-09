@@ -7,9 +7,9 @@ en:
   amount: amount
   balance: balance
   breadcrumb:
+    memberships: members
     organizations: organization
     transactions: transactions
-    memberships: members
   cancel: cancel
   comment: comment
   create: create
@@ -46,8 +46,8 @@ en:
   organization_updated: organization updated
   organizations: organizations
   phone: phone
-  registered_at: registered at
   recent_events: recent events
+  registered_at: registered at
   role: role
   roles:
     member: member

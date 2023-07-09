@@ -6,6 +6,10 @@ ru:
   add_member: добавить участника
   amount: количество
   balance: баланс
+  breadcrumb:
+    memberships: участники
+    organizations: ораганизация
+    transactions: операции
   cancel: отмена
   comment: комментарий
   create: создать
@@ -13,6 +17,7 @@ ru:
     formats:
       default: "%d.%m.%Y"
       short: "%d.%m"
+  details: детали
   edit: редактировать
   enter: войти
   expense_created: расход добавлен
@@ -41,6 +46,7 @@ ru:
   organization_updated: организация обновлена
   organizations: организации
   phone: телефон
+  recent_events: недавние события
   registered_at: дата регистрации
   role: роль
   roles:

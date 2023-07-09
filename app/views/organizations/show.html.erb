@@ -3,7 +3,7 @@
 
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><%= number_to_currency(@organization.balance) %></h5>
+        <h5 class="card-title organization__balance"><%= number_to_currency(@organization.balance) %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><%= link_to t("transactions"), organization_transactions_url(@organization), class: 'link-secondary' %></h6>
         <p class="card-text">
         </p>
