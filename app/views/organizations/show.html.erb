@@ -1,48 +1,119 @@
-<div class="card" style="width: 21rem;">
-  <div class="card-body">
-  <h5 class="card-title"><%= number_to_currency(@organization.balance) %></h5>
-  <h6 class="card-subtitle mb-2 text-body-secondary"><%= link_to t("details"), organization_transactions_url(@organization) %></h6>
-  <p class="card-text">
-    <%= donut_chart Transaction.group(:type).sum(:amount),
-      class: 'box',
-      height: '250px',
-      options: {
-        legend: {
-          bottom: '0'
-        },
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }
-    %>
-  </p>
-    <% if policy(:income).create?(@organization) %>
-      <%= link_to t('add_income'), new_organization_income_path(@organization), class: 'btn btn-outline-primary' %>
-    <% end %>
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-0">
+  <div class="col">
 
-    <% if policy(:expense).create?(@organization) %>
-      <%= link_to t('add_expense'), new_organization_expense_path(@organization), class: 'btn btn-outline-secondary' %>
-    <% end %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= number_to_currency(@organization.balance) %></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= link_to t("transactions"), organization_transactions_url(@organization), class: 'link-secondary' %></h6>
+        <p class="card-text">
+        </p>
+        <div class="btn-group">
+        <% if policy(:income).create?(@organization) %>
+          <%= link_to new_organization_income_path(@organization), class: 'btn btn-outline-primary' do %>
+            <i class="bi bi-piggy-bank"></i>
+            <%= t('add_income') %>
+          <% end %>
+        <% end %>
+
+        <% if policy(:expense).create?(@organization) %>
+          <%= link_to new_organization_expense_path(@organization), class: 'btn btn-outline-danger' do %>
+            <i class="bi bi-credit-card"></i>
+            <%= t('add_expense') %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi bi-people-fill"></i>
+          <%= t('members').capitalize %>
+          <span class="badge bg-secondary"><%= @organization.members.size %></span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><%= link_to t('members'), organization_memberships_url(@organization), class: 'link-secondary' %></h6>
+        <p class="card-text">Добавьте участников организации, чтобы дать им возможность следить за показателями орагнизации</p>
+        <% if policy(@organization).add_member? %>
+          <%= link_to new_organization_membership_path(@organization), class: 'btn btn-outline-primary' do %>
+            <i class="bi bi-person-add"></i>
+            <%= t('add_member') %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
 
+<h2><%= t("recent_events").titleize %></h2>
 
-
-  <div class="card mt-3">
-    <h5 class="card-header">
-      <%= t('members').capitalize %>
-    </h5>
-    <div class="card-body">
-      <h5 class="card-title organization__balance"><%= link_to @organization.members.size, organization_memberships_url(@organization) %></h5>
-      <p class="card-text"></p>
-
-      <% if policy(@organization).add_member? %>
-        <%= link_to t('add_member'), new_organization_membership_path(@organization), class: 'btn btn-secondary' %>
-      <% end %>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-credit-card"></i>
+        Подарок преподавателю
+      </h5>
+      <small>3 days ago</small>
     </div>
-  </div>
+    <p class="mb-1">3500 руб.</p>
+    <small></small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-credit-card"></i>
+        Покупака карандашей
+      </h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">100 руб.</p>
+    <small></small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-person-add"></i>
+        Иван Петров
+      </h5>
+      <small class="text-body-secondary">3 days ago</small>
+    </div>
+    <p class="mb-1">Инна добавила Ивана Петрова</p>
+    <small class="text-body-secondary"></small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-credit-card"></i>
+        Подарок преподавателю
+      </h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">3500 руб.</p>
+    <small></small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-credit-card"></i>
+        Покупака карандашей
+      </h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">100 руб.</p>
+    <small></small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">
+        <i class="bi bi-person-add"></i>
+        Иван Петров
+      </h5>
+      <small class="text-body-secondary">3 days ago</small>
+    </div>
+    <p class="mb-1">Инна добавила Ивана Петрова</p>
+    <small class="text-body-secondary"></small>
+  </a>
+</div>

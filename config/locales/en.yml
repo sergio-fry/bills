@@ -47,6 +47,7 @@ en:
   organizations: organizations
   phone: phone
   registered_at: registered at
+  recent_events: recent events
   role: role
   roles:
     member: member
