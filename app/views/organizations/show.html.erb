@@ -1,19 +1,37 @@
-<div class="card mt-3">
-  <h5 class="card-header">
-    <%= t('balance').capitalize %>
-  </h5>
+<div class="card" style="width: 21rem;">
   <div class="card-body">
-    <h5 class="card-title organization__balance"><%= link_to number_to_currency(@organization.balance), organization_transactions_url(@organization) %></h5>
-    <p class="card-text"></p>
+  <h5 class="card-title"><%= number_to_currency(@organization.balance) %></h5>
+  <h6 class="card-subtitle mb-2 text-body-secondary"><%= link_to t("details"), organization_transactions_url(@organization) %></h6>
+  <p class="card-text">
+    <%= donut_chart Transaction.group(:type).sum(:amount),
+      class: 'box',
+      height: '250px',
+      options: {
+        legend: {
+          bottom: '0'
+        },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    %>
+  </p>
     <% if policy(:income).create?(@organization) %>
-      <%= link_to t('add_income'), new_organization_income_path(@organization), class: 'btn btn-secondary' %>
+      <%= link_to t('add_income'), new_organization_income_path(@organization), class: 'btn btn-outline-primary' %>
     <% end %>
 
     <% if policy(:expense).create?(@organization) %>
-      <%= link_to t('add_expense'), new_organization_expense_path(@organization), class: 'btn btn-secondary' %>
+      <%= link_to t('add_expense'), new_organization_expense_path(@organization), class: 'btn btn-outline-secondary' %>
     <% end %>
   </div>
 </div>
+
+
+
 
   <div class="card mt-3">
     <h5 class="card-header">
