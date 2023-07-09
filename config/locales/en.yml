@@ -6,6 +6,10 @@ en:
   add_member: add member
   amount: amount
   balance: balance
+  breadcrumb:
+    organizations: organization
+    transactions: transactions
+    memberships: members
   cancel: cancel
   comment: comment
   create: create
